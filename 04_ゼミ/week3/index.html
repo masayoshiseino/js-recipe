@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自販機</title>
+  </head>
+  <body>
+    <h1>自販機</h1>
+    <section>
+      <h3>自販機にお金を入れる</h3>
+      <button id="add-button-100">
+        100円入れる
+      </button>
+      <h4>↓財布↓</h4>
+      <div id="display-saifu">1000</div>
+      <h4>↓投入金額↓</h4>
+      <div id="display-jihanki-money">0</div>
+    </section>
+    <section>
+      <h3>商品を買う</h3>
+      <button id="buy-button-tea">お茶(100円)</button>
+    </section>
+    <section>
+      <h3>買った商品</h3>
+      <div id="display-items"></div>
+    </section>
+    <script>
+      // HTML要素を取得する
+      const buyButtonTea = document.getElementById("buy-button-tea");
+      const displayItems = document.getElementById("display-items");
+      const addButton100 = document.getElementById("add-button-100");
+      const displaySaifu = document.getElementById("display-saifu");
+      const displayJihankiMoney = document.getElementById(
+        "display-jihanki-money"
+      );
+      // キャメル式 => JS
+      // > addButton
+      // スネーク式 => Python C
+      // > add_button
+      //2-5
+      let saifu = 1000;
+      let jihankiMoney = 0;
+
+      // 財布→投入金額に＋１００
+      // 1.どこで（HTMLのどこの部品で）
+      // 2.なにを処理するのか > 財布→投入金額に＋１００
+      addButton100.onclick = function () {
+        // saifu - 100 >= 0
+        // saifu >= 100
+        if (saifu >= 100) {
+          saifu -= 100;
+          jihankiMoney += 100;
+          displaySaifu.textContent = saifu;
+          displayJihankiMoney.textContent = jihankiMoney;
+        }
+      };
+
+      // buyButtonTea を押した時の処理
+      // >お茶を買う＋投入金額から100引く
+      buyButtonTea.onclick = function () {
+        // jihankiMoney - 100 < 0 の時、処理を実行したくない
+        // break で処理を止めることができる
+        // ごめん break は for文で使うやつでした
+        // 正しくは return でした。
+        if (jihankiMoney < 100) {
+          //すげえ、しっかり調べる
+          return;
+        }
+        jihankiMoney -= 100;
+        displayJihankiMoney.textContent = jihankiMoney;
+        displayItems.textContent += "🍵";
+      };
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>
