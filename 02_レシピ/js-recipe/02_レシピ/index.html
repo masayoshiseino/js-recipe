@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue　ATM </title>
+  </head>
+
+  <body>
+      <div id="app">
+          <section　id="nyuryoku">
+            <h1>入力画面</h1>
+           <input type="number" v-model="nyuryokugaku" />
+           <div>入力額:{{ nyuuryokugaku }}円</div>
+           <button v-on:click="nyukinn">入金</button>
+           <button v-on:click="syukkin" v-bind:disabled="zanndaka ===0">出金</button>
+         </section>
+
+          <section id="zandaka">
+              <h1>口座残高</h1>
+              <h3>残高:{{zandaka}}円</h3>
+          </section>
+
+          <section id="torihiki">
+              <h1>取引記録</h1>
+              <div v-for="log in logs">{{log}}</div>
+          </section>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> 
+    <script src="main.js"></script>
+  </body>
+  </html>
